@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CroomX Games - Reward Distribution</title>
+    <title>Ball Sort Puzzle - 50 Levels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* All the existing CSS styles remain unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -13,141 +15,542 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background-color: #10a37f;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        
-        .reward-section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-        }
-        
-        .image-section {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px;
+            color: white;
+            overflow-x: hidden;
         }
         
-        .game {
-            width: 350px; /* Fixed width */
-            height: auto; /* Height adjusts automatically */
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        
-        h2 {
-            color: #10a37f;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        table {
+        .container {
+            max-width: 1400px;
             width: 100%;
-            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        header {
             margin-bottom: 20px;
+            text-align: center;
         }
         
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        th {
-            background-color: #f0f0f0;
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .level-info {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .moves {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .difficulty {
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
             font-weight: bold;
         }
         
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .separator {
-            border-bottom: 2px solid #10a37f;
-            margin: 15px 0;
-        }
-        
-        .cta {
-            background-color: #10a37f;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-        
-        .cta:hover {
-            background-color: #0d8a6d;
-        }
-        
-        .description {
-            margin-top: 20px;
+        .game-board {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            min-height: 220px;
             padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        footer {
+        .tube {
+            width: 65px;
+            height: 200px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            border-radius: 8px 8px 4px 4px;
+            position: relative;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tube::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 8px 8px 0 0;
+            z-index: -1;
+        }
+        
+        .tube:hover {
+            transform: translateY(-6px);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tube.selected {
+            transform: translateY(-10px);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.3));
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        .tube.valid-target {
+            border: 2px dashed #4CAF50;
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.7);
+        }
+        
+        .tube.invalid-target {
+            border: 2px dashed #f44336;
+            box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
+        }
+        
+        .ball {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+            box-shadow: 
+                inset 0 -6px 12px rgba(0, 0, 0, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ball::after {
+            content: '';
+            position: absolute;
+            top: 12%;
+            left: 18%;
+            width: 18%;
+            height: 8%;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            background: linear-gradient(45deg, #9E9E9E, #757575);
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+            max-width: 600px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .instructions h3 {
+            margin-bottom: 12px;
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #666;
+            font-size: 1.3rem;
+            color: #FFD700;
+        }
+        
+        .instructions p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 0.9rem;
         }
         
+        .win-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        
+        .win-message.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .win-content {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .win-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .win-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .tube-capacity {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+        }
+        
+        .level-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            margin: 12px 0;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .level-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #CDDC39);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.7);
+        }
+        
+        .level-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .level-pages {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .page-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .page-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .page-btn.active {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-color: #4CAF50;
+            transform: translateY(-2px);
+        }
+        
+        .level-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .level-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .level-btn.current {
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+            border-color: #FF5722;
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(255, 87, 34, 0.7);
+        }
+        
+        .level-btn.completed {
+            background: linear-gradient(45deg, #2196F3, #03A9F4);
+            border-color: #2196F3;
+            box-shadow: 0 0 8px rgba(33, 150, 243, 0.7);
+        }
+        
+        .level-btn.locked {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #f00;
+            opacity: 0;
+            z-index: 99;
+        }
+        
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .save-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .sound-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .sound-control:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .sound-control i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
         @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
+            .tube {
+                width: 55px;
+                height: 180px;
             }
             
-            .reward-section, .image-section {
-                max-width: 100%;
+            .ball {
+                width: 40px;
+                height: 40px;
+                font-size: 0.7rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .game-board {
+                gap: 8px;
+            }
+            
+            .controls {
+                gap: 8px;
+            }
+            
+            button {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .level-btn, .page-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.7rem;
+            }
+            
+            .save-indicator {
+                top: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+            
+            .sound-control {
+                bottom: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -155,96 +558,850 @@
 <body>
     <div class="container">
         <header>
-            <h1>CroomX Games</h1>
-            <p class="subtitle">Exciting Rewards for Top Performers</p>
+            <h1><i class="fas fa-palette"></i> Ball Sort Puzzle</h1>
+            <div class="subtitle">50 Levels - Progress Auto-Saved</div>
         </header>
         
-        <div class="content">
-            <div class="reward-section">
-                <h2>Final Reward Distribution</h2>
-                
-                <table>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Reward</th>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="separator"></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ramesh yadav</td>
-                        <td>₹50,000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Aditya mauriya</td>
-                        <td>₹10,000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Ritesh bhardwaj</td>
-                        <td>₹8,889</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Rishabh pathak</td>
-                        <td>₹7,778</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Sourabh verma </td>
-                        <td>₹6,667</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Om soni</td>
-                        <td>₹5,556</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Ajay baghel</td>
-                        <td>₹4,444</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Ronak sharma</td>
-                        <td>₹3,333</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Ankit singh</td>
-                        <td>₹2,222</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Roushan tiwari</td>
-                        <td>₹1,111</td>
-                    </tr>
-                </table>
-                
-                <div class="description">
-                    <p>Top 10 best player This tournament Wins above player jun in 7 Days  month The CroomX Games tournament was fiercely competitive, with players showcasing exceptional skills and strategy.</p>
-                    <p>We're proud to reward our top performers with these cash prizes. Stay tuned for our next tournament with even bigger rewards! Attention please reward only applicable for top best player not all palyer keep enjoy games</p>
-                </div>
-                
-                <button class="cta">Automate</button>
+        <div class="game-info">
+            <div class="level-info">
+                <i class="fas fa-layer-group"></i>
+                Level: <span id="level">1</span> / <span id="total-levels">50</span>
             </div>
-            
-            <div class="image-section">
-                <img src="applogo.png" alt="Cromine Game Screenshot" class="game">
-                <div class="description">
-                    <h3>About CroomX Games</h3>
-                    <p>100% GUARANTED REWARDS PROMISSED BY CroomX COMPANY INCREASE YOUR SCORE AND COMPLETE TASK IN THE GAME. CroomX Games is an exciting gaming platform that hosts competitive tournaments with real real users. Our games test strategy, skill, and quick thinking.</p>
-                    <p>Join 50k User of players competing daily for the chance to win big rewards and establish yourself as a top player in our community.</p>
-                </div>
+            <div class="moves">
+                <i class="fas fa-shoe-prints"></i>
+                Moves: <span id="move-count">0</span>
+            </div>
+            <div class="difficulty" id="difficulty">
+                <i class="fas fa-signal"></i> <span>Beginner</span>
             </div>
         </div>
         
-        <footer>
-            <p>&copy; 2025 CroomX Games. All rights reserved.</p>
-        </footer>
+        <div class="level-progress">
+            <div class="level-progress-bar" id="level-progress-bar" style="width: 2%;"></div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <i class="fas fa-check-circle"></i>
+                Completed: <span id="completed-levels">0</span>/50
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                Best Moves: <span id="best-moves">-</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-vial"></i>
+                Colors: <span id="color-count">3</span> | Tubes: <span id="tube-count">4</span>
+            </div>
+        </div>
+        
+        <div class="level-navigation">
+            <div class="level-pages" id="level-pages">
+                <!-- Page buttons will be generated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="game-board" id="game-board">
+            <!-- Tubes will be generated by JavaScript -->
+        </div>
+        
+        <div class="controls">
+            <button id="restart-btn">
+                <i class="fas fa-redo"></i> Restart
+            </button>
+            <button id="prev-level" disabled>
+                <i class="fas fa-arrow-left"></i> Prev
+            </button>
+            <button id="next-level">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <button id="reset-progress-btn">
+                <i class="fas fa-trash"></i> Reset Progress
+            </button>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-gamepad"></i> How to Play</h3>
+            <p><i class="fas fa-mouse-pointer"></i> Click on a tube to select the top ball</p>
+            <p><i class="fas fa-exchange-alt"></i> Click on another tube to move the selected ball there</p>
+            <p><i class="fas fa-vial"></i> Move to empty tube OR on top of same color</p>
+            <p><i class="fas fa-flag-checkered"></i> Complete when all tubes contain single color balls</p>
+            <p><i class="fas fa-save"></i> <strong>Progress automatically saved - Close and return anytime!</strong></p>
+        </div>
     </div>
+    
+    <div class="win-message" id="win-message">
+        <div class="win-content">
+            <h2 id="win-title"><i class="fas fa-trophy"></i> Level Complete!</h2>
+            <p>You solved level <span id="win-level">1</span> in <span id="win-moves">0</span> moves!</p>
+            <p id="new-best" style="display:none; color: #4CAF50; font-weight: bold;">
+                <i class="fas fa-crown"></i> New Best Score!
+            </p>
+            <div class="controls">
+                <button id="next-level-btn">
+                    Next Level <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="replay-btn">
+                    <i class="fas fa-redo"></i> Play Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="save-indicator" id="save-indicator">
+        <i class="fas fa-check"></i> Progress Saved
+    </div>
+
+    <div class="sound-control" id="sound-control">
+        <i class="fas fa-volume-up"></i>
+    </div>
+
+    <script>
+        // Sound effects - using Web Audio API to generate sounds
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioContext = new AudioContext();
+        
+        // Sound settings
+        let soundEnabled = true;
+        
+        // Sound control element
+        const soundControl = document.getElementById('sound-control');
+        
+        // Toggle sound
+        soundControl.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+                soundControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                playSound('toggle');
+            } else {
+                soundControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+        });
+        
+        // Sound generation functions
+        function playSound(type) {
+            if (!soundEnabled) return;
+            
+            switch(type) {
+                case 'select':
+                    playTone(440, 0.1, 'sine');
+                    break;
+                case 'move':
+                    playTone(523.25, 0.1, 'sine');
+                    break;
+                case 'invalid':
+                    playTone(220, 0.2, 'sawtooth');
+                    break;
+                case 'win':
+                    playWinSound();
+                    break;
+                case 'button':
+                    playTone(349.23, 0.1, 'square');
+                    break;
+                case 'toggle':
+                    playTone(659.25, 0.1, 'sine');
+                    break;
+                case 'levelComplete':
+                    playLevelCompleteSound();
+                    break;
+            }
+        }
+        
+        function playTone(frequency, duration, waveType) {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = waveType;
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+        
+        function playWinSound() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            
+            const notes = [523.25, 659.25, 783.99, 1046.50];
+            let time = audioContext.currentTime;
+            
+            notes.forEach((note, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = note;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, time);
+                gainNode.gain.linearRampToValueAtTime(0.1, time + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.3);
+                
+                oscillator.start(time);
+                oscillator.stop(time + 0.3);
+                
+                time += 0.15;
+            });
+        }
+        
+        function playLevelCompleteSound() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            
+            const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99];
+            let time = audioContext.currentTime;
+            
+            notes.forEach((note, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = note;
+                oscillator.type = 'triangle';
+                
+                gainNode.gain.setValueAtTime(0, time);
+                gainNode.gain.linearRampToValueAtTime(0.1, time + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.4);
+                
+                oscillator.start(time);
+                oscillator.stop(time + 0.4);
+                
+                time += 0.1;
+            });
+        }
+
+        // Game configuration - 50 Levels with dynamic tube logic
+        const levels = [
+            // Levels 1-10: 3-4 Colors (Beginner)
+            { tubes: [['red', 'blue', 'green'], ['red', 'blue', 'green'], [], []], colors: 3, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green'], ['green', 'red', 'blue'], [], []], colors: 3, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green'], ['blue', 'green', 'red'], [], []], colors: 3, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['red', 'blue', 'green', 'yellow'], [], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['yellow', 'green', 'blue', 'red'], [], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'yellow', 'red', 'yellow'], ['blue', 'green', 'blue', 'green'], [], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'red', 'blue', 'blue'], ['green', 'green', 'yellow', 'yellow'], [], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['red', 'blue'], ['green', 'yellow'], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'green', 'blue', 'yellow'], ['blue', 'yellow', 'red', 'green'], [], [], []], colors: 4, difficulty: 'Beginner' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['yellow', 'red', 'blue', 'green'], ['green', 'yellow', 'red', 'blue'], [], []], colors: 4, difficulty: 'Beginner' },
+
+            // Levels 11-20: 4-5 Colors (Easy)
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'red', 'blue', 'green'], ['yellow', 'purple', 'red', 'blue'], [], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], [], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'red', 'blue', 'green'], ['yellow', 'purple', 'red', 'blue'], ['green', 'yellow', 'purple', 'red'], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['red', 'blue', 'green', 'yellow'], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'red'], ['blue', 'green', 'yellow', 'purple'], [], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'red', 'blue'], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'red', 'blue', 'green']], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['red', 'blue', 'green', 'yellow'], [], [], []], colors: 5, difficulty: 'Easy' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['pink', 'cyan', 'orange', 'purple'], ['yellow', 'green', 'blue', 'red'], [], []], colors: 5, difficulty: 'Easy' },
+
+            // Levels 21-30: 5-6 Colors (Medium)
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], [], [], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['pink', 'cyan', 'orange', 'purple'], ['yellow', 'green', 'blue', 'red'], ['brown', 'brown', 'brown', 'brown'], [], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'red', 'blue'], [], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], [], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['red', 'blue', 'green', 'yellow'], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink']], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], []], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange']], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal']], colors: 6, difficulty: 'Medium' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green']], colors: 6, difficulty: 'Medium' },
+
+            // Levels 31-40: 6-7 Colors (Hard)
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], []], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan']], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], []], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime']], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], []], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow']], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], []], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink']], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], []], colors: 7, difficulty: 'Hard' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red']], colors: 7, difficulty: 'Hard' },
+
+            // Levels 41-50: 7-8 Colors (Expert)
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], []], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple']], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], []], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown']], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], []], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue']], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], []], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange']], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], []], colors: 8, difficulty: 'Expert' },
+            { tubes: [['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal'], ['lime', 'red', 'blue', 'green'], ['yellow', 'purple', 'orange', 'cyan'], ['pink', 'brown', 'teal', 'lime'], ['red', 'blue', 'green', 'yellow'], ['purple', 'orange', 'cyan', 'pink'], ['brown', 'teal', 'lime', 'red'], ['blue', 'green', 'yellow', 'purple'], ['orange', 'cyan', 'pink', 'brown'], ['teal', 'lime', 'red', 'blue'], ['green', 'yellow', 'purple', 'orange'], ['cyan', 'pink', 'brown', 'teal']], colors: 8, difficulty: 'Expert' }
+        ];
+
+        // Game state
+        let currentLevel = 0;
+        let moves = 0;
+        let selectedTube = null;
+        let gameState = [];
+        let tubeCapacity = 4;
+        let completedLevels = new Set();
+        let bestMoves = Array(50).fill(null);
+        let currentPage = 0;
+        const levelsPerPage = 10;
+
+        // DOM elements
+        const gameBoard = document.getElementById('game-board');
+        const levelDisplay = document.getElementById('level');
+        const totalLevelsDisplay = document.getElementById('total-levels');
+        const moveCountDisplay = document.getElementById('move-count');
+        const levelProgressBar = document.getElementById('level-progress-bar');
+        const levelPages = document.getElementById('level-pages');
+        const difficultyDisplay = document.getElementById('difficulty');
+        const completedLevelsDisplay = document.getElementById('completed-levels');
+        const bestMovesDisplay = document.getElementById('best-moves');
+        const tubeCountDisplay = document.getElementById('tube-count');
+        const colorCountDisplay = document.getElementById('color-count');
+        const restartBtn = document.getElementById('restart-btn');
+        const prevLevelBtn = document.getElementById('prev-level');
+        const nextLevelBtn = document.getElementById('next-level');
+        const resetProgressBtn = document.getElementById('reset-progress-btn');
+        const winMessage = document.getElementById('win-message');
+        const winTitle = document.getElementById('win-title');
+        const winLevel = document.getElementById('win-level');
+        const winMovesElement = document.getElementById('win-moves');
+        const newBest = document.getElementById('new-best');
+        const nextLevelWinBtn = document.getElementById('next-level-btn');
+        const replayBtn = document.getElementById('replay-btn');
+        const saveIndicator = document.getElementById('save-indicator');
+
+        // Color mapping
+        const colorMap = {
+            'red': '#FF5252', 'blue': '#2196F3', 'green': '#4CAF50', 'yellow': '#FFEB3B',
+            'purple': '#9C27B0', 'orange': '#FF9800', 'cyan': '#00BCD4', 'pink': '#E91E63',
+            'brown': '#795548', 'teal': '#009688', 'lime': '#CDDC39'
+        };
+
+        // Storage keys
+        const STORAGE_KEYS = {
+            COMPLETED_LEVELS: 'ballSort_completedLevels',
+            BEST_MOVES: 'ballSort_bestMoves',
+            CURRENT_LEVEL: 'ballSort_currentLevel'
+        };
+
+        // Load progress from localStorage
+        function loadProgress() {
+            try {
+                // Load completed levels
+                const savedCompleted = localStorage.getItem(STORAGE_KEYS.COMPLETED_LEVELS);
+                if (savedCompleted) {
+                    const completedArray = JSON.parse(savedCompleted);
+                    completedLevels = new Set(completedArray);
+                }
+
+                // Load best moves
+                const savedBestMoves = localStorage.getItem(STORAGE_KEYS.BEST_MOVES);
+                if (savedBestMoves) {
+                    const movesArray = JSON.parse(savedBestMoves);
+                    bestMoves = movesArray.map(move => move === null ? null : move);
+                }
+
+                // Load current level
+                const savedCurrentLevel = localStorage.getItem(STORAGE_KEYS.CURRENT_LEVEL);
+                if (savedCurrentLevel !== null) {
+                    currentLevel = parseInt(savedCurrentLevel);
+                    // Ensure current level is valid
+                    if (currentLevel < 0 || currentLevel >= levels.length) {
+                        currentLevel = 0;
+                    }
+                }
+
+                console.log('Progress loaded:', {
+                    completedLevels: Array.from(completedLevels),
+                    bestMoves: bestMoves,
+                    currentLevel: currentLevel
+                });
+            } catch (error) {
+                console.error('Error loading progress:', error);
+                // Reset to default if there's an error
+                completedLevels = new Set();
+                bestMoves = Array(50).fill(null);
+                currentLevel = 0;
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            try {
+                localStorage.setItem(STORAGE_KEYS.COMPLETED_LEVELS, JSON.stringify(Array.from(completedLevels)));
+                localStorage.setItem(STORAGE_KEYS.BEST_MOVES, JSON.stringify(bestMoves));
+                localStorage.setItem(STORAGE_KEYS.CURRENT_LEVEL, currentLevel.toString());
+                
+                console.log('Progress saved:', {
+                    completedLevels: Array.from(completedLevels),
+                    bestMoves: bestMoves,
+                    currentLevel: currentLevel
+                });
+                
+                // Show save indicator
+                showSaveIndicator();
+            } catch (error) {
+                console.error('Error saving progress:', error);
+            }
+        }
+
+        // Show save indicator
+        function showSaveIndicator() {
+            saveIndicator.classList.add('show');
+            setTimeout(() => {
+                saveIndicator.classList.remove('show');
+            }, 2000);
+        }
+
+        // Reset all progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
+                completedLevels = new Set();
+                bestMoves = Array(50).fill(null);
+                currentLevel = 0;
+                saveProgress();
+                initGame();
+                showSaveIndicator();
+                playSound('button');
+            }
+        }
+
+        // Calculate required tubes based on colors
+        function calculateRequiredTubes(colorCount) {
+            return colorCount + 1;
+        }
+
+        // Initialize game
+        function initGame() {
+            moves = 0;
+            selectedTube = null;
+            gameState = JSON.parse(JSON.stringify(levels[currentLevel].tubes));
+            tubeCapacity = 4;
+            
+            const requiredTubes = calculateRequiredTubes(levels[currentLevel].colors);
+            while (gameState.length < requiredTubes) {
+                gameState.push([]);
+            }
+            
+            difficultyDisplay.innerHTML = `<i class="fas fa-signal"></i> <span>${levels[currentLevel].difficulty}</span>`;
+            tubeCountDisplay.textContent = gameState.length;
+            colorCountDisplay.textContent = levels[currentLevel].colors;
+            
+            renderGame();
+            updateDisplay();
+            updateLevelPages();
+        }
+
+        // Render the game board
+        function renderGame() {
+            gameBoard.innerHTML = '';
+            
+            gameState.forEach((tube, index) => {
+                const tubeElement = document.createElement('div');
+                tubeElement.className = 'tube';
+                tubeElement.dataset.index = index;
+                
+                tube.forEach(color => {
+                    const ball = document.createElement('div');
+                    ball.className = 'ball';
+                    ball.style.backgroundColor = colorMap[color];
+                    ball.style.boxShadow = `
+                        inset 0 -6px 12px rgba(0, 0, 0, 0.3),
+                        0 4px 8px rgba(0, 0, 0, 0.2),
+                        0 0 0 2px ${darkenColor(colorMap[color], 20)}
+                    `;
+                    ball.textContent = color.charAt(0).toUpperCase();
+                    tubeElement.appendChild(ball);
+                });
+                
+                for (let i = tube.length; i < tubeCapacity; i++) {
+                    const emptySpace = document.createElement('div');
+                    emptySpace.className = 'empty-space';
+                    emptySpace.style.height = '45px';
+                    emptySpace.style.margin = '2px 0';
+                    emptySpace.style.visibility = 'hidden';
+                    tubeElement.appendChild(emptySpace);
+                }
+                
+                const capacityIndicator = document.createElement('div');
+                capacityIndicator.className = 'tube-capacity';
+                capacityIndicator.textContent = `${tube.length}/${tubeCapacity}`;
+                tubeElement.appendChild(capacityIndicator);
+                
+                tubeElement.addEventListener('click', () => handleTubeClick(index));
+                gameBoard.appendChild(tubeElement);
+            });
+            
+            if (selectedTube !== null) {
+                highlightValidMoves();
+            }
+        }
+
+        // Darken a color
+        function darkenColor(color, percent) {
+            const num = parseInt(color.replace("#",""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) - amt;
+            const G = (num >> 8 & 0x00FF) - amt;
+            const B = (num & 0x0000FF) - amt;
+            return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+        }
+
+        // Handle tube click
+        function handleTubeClick(tubeIndex) {
+            if (selectedTube === null) {
+                if (gameState[tubeIndex].length > 0) {
+                    selectedTube = tubeIndex;
+                    highlightTube(tubeIndex, true);
+                    highlightValidMoves();
+                    playSound('select');
+                }
+                return;
+            }
+            
+            if (selectedTube === tubeIndex) {
+                clearHighlights();
+                selectedTube = null;
+                return;
+            }
+            
+            if (isValidMove(selectedTube, tubeIndex)) {
+                moveBall(selectedTube, tubeIndex);
+                clearHighlights();
+                selectedTube = null;
+                
+                if (checkWin()) {
+                    completedLevels.add(currentLevel);
+                    updateBestMoves();
+                    saveProgress(); // Save when level completed
+                    createConfetti();
+                    setTimeout(() => {
+                        showWinMessage();
+                    }, 1000);
+                }
+            } else {
+                highlightTube(tubeIndex, false, 'invalid');
+                playSound('invalid');
+                setTimeout(() => {
+                    clearHighlights();
+                    selectedTube = null;
+                }, 500);
+            }
+        }
+
+        // Check if a move is valid
+        function isValidMove(fromIndex, toIndex) {
+            const fromTube = gameState[fromIndex];
+            const toTube = gameState[toIndex];
+            
+            if (fromTube.length === 0) return false;
+            if (toTube.length === 0) return true;
+            if (toTube.length >= tubeCapacity) return false;
+            
+            const fromColor = fromTube[fromTube.length - 1];
+            const toColor = toTube[toTube.length - 1];
+            
+            return fromColor === toColor;
+        }
+
+        // Highlight valid moves
+        function highlightValidMoves() {
+            const tubes = document.querySelectorAll('.tube');
+            tubes.forEach((tube, index) => {
+                if (index !== selectedTube && isValidMove(selectedTube, index)) {
+                    tube.classList.add('valid-target');
+                } else if (index !== selectedTube) {
+                    tube.classList.add('invalid-target');
+                }
+            });
+        }
+
+        // Clear all highlights
+        function clearHighlights() {
+            const tubes = document.querySelectorAll('.tube');
+            tubes.forEach(tube => {
+                tube.classList.remove('selected', 'valid-target', 'invalid-target');
+            });
+        }
+
+        // Highlight a tube
+        function highlightTube(tubeIndex, isSelected, type = 'selected') {
+            const tubes = document.querySelectorAll('.tube');
+            if (isSelected) {
+                tubes[tubeIndex].classList.add(type);
+            } else {
+                tubes[tubeIndex].classList.remove(type);
+            }
+        }
+
+        // Move a ball from one tube to another
+        function moveBall(fromIndex, toIndex) {
+            const fromTube = gameState[fromIndex];
+            const toTube = gameState[toIndex];
+            
+            const ball = fromTube.pop();
+            toTube.push(ball);
+            
+            moves++;
+            updateDisplay();
+            renderGame();
+            playSound('move');
+            
+            // Auto-save after each move
+            saveProgress();
+        }
+
+        // Check if the player has won - FIXED VERSION
+        function checkWin() {
+            // Count how many balls of each color we have
+            const colorCounts = {};
+            
+            // Count all balls by color
+            gameState.forEach(tube => {
+                tube.forEach(color => {
+                    colorCounts[color] = (colorCounts[color] || 0) + 1;
+                });
+            });
+            
+            // Check each tube to see if it contains only one color
+            for (const tube of gameState) {
+                if (tube.length === 0) continue;
+                
+                const tubeColor = tube[0];
+                
+                // Check if all balls in this tube are the same color
+                const allSameColor = tube.every(ball => ball === tubeColor);
+                
+                if (allSameColor) {
+                    // Check if this tube contains ALL balls of this color
+                    if (tube.length === colorCounts[tubeColor]) {
+                        // This tube contains all balls of this color
+                        continue;
+                    } else {
+                        // This tube has same color but not all balls of that color
+                        return false;
+                    }
+                } else {
+                    // Tube has mixed colors
+                    return false;
+                }
+            }
+            
+            // If we get here, all non-empty tubes contain all balls of a single color
+            return true;
+        }
+
+        // Update best moves
+        function updateBestMoves() {
+            if (bestMoves[currentLevel] === null || moves < bestMoves[currentLevel]) {
+                bestMoves[currentLevel] = moves;
+                newBest.style.display = 'block';
+            } else {
+                newBest.style.display = 'none';
+            }
+            updateDisplay();
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#FF5252', '#2196F3', '#4CAF50', '#FFEB3B', '#9C27B0', '#FF9800'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-8px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = Math.random() * 8 + 4 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.opacity = '1';
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1500,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+
+        // Show win message
+        function showWinMessage() {
+            winLevel.textContent = currentLevel + 1;
+            winMovesElement.textContent = moves;
+            
+            if (currentLevel === levels.length - 1) {
+                winTitle.innerHTML = '<i class="fas fa-trophy"></i> Congratulations!';
+                document.querySelector('#win-message p').textContent = `You completed all ${levels.length} levels!`;
+                newBest.style.display = 'none';
+                playSound('win');
+            } else {
+                winTitle.innerHTML = '<i class="fas fa-trophy"></i> Level Complete!';
+                document.querySelector('#win-message p').innerHTML = `You solved level <span id="win-level">${currentLevel + 1}</span> in <span id="win-moves">${moves}</span> moves!`;
+                playSound('levelComplete');
+            }
+            
+            winMessage.classList.add('show');
+        }
+
+        // Update display
+        function updateDisplay() {
+            levelDisplay.textContent = currentLevel + 1;
+            totalLevelsDisplay.textContent = levels.length;
+            moveCountDisplay.textContent = moves;
+            
+            const progress = ((currentLevel + 1) / levels.length) * 100;
+            levelProgressBar.style.width = `${progress}%`;
+            
+            prevLevelBtn.disabled = currentLevel === 0;
+            nextLevelBtn.disabled = currentLevel === levels.length - 1;
+            
+            completedLevelsDisplay.textContent = completedLevels.size;
+            bestMovesDisplay.textContent = bestMoves[currentLevel] !== null ? bestMoves[currentLevel] : '-';
+        }
+
+        // Check if a level is unlocked
+        function isLevelUnlocked(levelIndex) {
+            if (levelIndex === 0) return true;
+            return completedLevels.has(levelIndex - 1);
+        }
+
+        // Update level pages
+        function updateLevelPages() {
+            levelPages.innerHTML = '';
+            const totalPages = Math.ceil(levels.length / levelsPerPage);
+            
+            for (let i = 0; i < totalPages; i++) {
+                const pageBtn = document.createElement('div');
+                pageBtn.className = 'page-btn';
+                if (i === currentPage) {
+                    pageBtn.classList.add('active');
+                }
+                pageBtn.textContent = i + 1;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    updateLevelPages();
+                    playSound('button');
+                });
+                levelPages.appendChild(pageBtn);
+            }
+            
+            const levelContainer = document.createElement('div');
+            levelContainer.style.display = 'flex';
+            levelContainer.style.gap = '8px';
+            levelContainer.style.flexWrap = 'wrap';
+            levelContainer.style.justifyContent = 'center';
+            levelContainer.style.marginTop = '12px';
+            
+            const startLevel = currentPage * levelsPerPage;
+            const endLevel = Math.min(startLevel + levelsPerPage, levels.length);
+            
+            for (let i = startLevel; i < endLevel; i++) {
+                const levelBtn = document.createElement('div');
+                levelBtn.className = 'level-btn';
+                
+                if (i === currentLevel) {
+                    levelBtn.classList.add('current');
+                } else if (completedLevels.has(i)) {
+                    levelBtn.classList.add('completed');
+                } else if (!isLevelUnlocked(i)) {
+                    levelBtn.classList.add('locked');
+                }
+                
+                levelBtn.textContent = i + 1;
+                
+                if (isLevelUnlocked(i)) {
+                    levelBtn.addEventListener('click', () => {
+                        if (i !== currentLevel) {
+                            currentLevel = i;
+                            saveProgress(); // Save when changing level
+                            initGame();
+                            playSound('button');
+                        }
+                    });
+                }
+                
+                levelContainer.appendChild(levelBtn);
+            }
+            
+            levelPages.appendChild(levelContainer);
+        }
+
+        // Event listeners
+        restartBtn.addEventListener('click', () => {
+            initGame();
+            saveProgress();
+            playSound('button');
+        });
+        
+        prevLevelBtn.addEventListener('click', () => {
+            if (currentLevel > 0) {
+                currentLevel--;
+                saveProgress();
+                initGame();
+                playSound('button');
+            }
+        });
+        
+        nextLevelBtn.addEventListener('click', () => {
+            if (currentLevel < levels.length - 1 && isLevelUnlocked(currentLevel + 1)) {
+                currentLevel++;
+                saveProgress();
+                initGame();
+                playSound('button');
+            }
+        });
+        
+        resetProgressBtn.addEventListener('click', resetProgress);
+        
+        nextLevelWinBtn.addEventListener('click', () => {
+            winMessage.classList.remove('show');
+            if (currentLevel < levels.length - 1) {
+                currentLevel++;
+                saveProgress();
+                initGame();
+                playSound('button');
+            } else {
+                currentLevel = 0;
+                saveProgress();
+                initGame();
+                playSound('button');
+            }
+        });
+        
+        replayBtn.addEventListener('click', () => {
+            winMessage.classList.remove('show');
+            initGame();
+            playSound('button');
+        });
+
+        // Auto-save when changing levels or completing levels
+        window.addEventListener('beforeunload', saveProgress);
+
+        // Initialize the game
+        loadProgress(); // Load saved progress first
+        initGame(); // Then initialize the game
+    </script>
 </body>
 </html>
