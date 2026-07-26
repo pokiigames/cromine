@@ -11,8 +11,6 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cromx.shop/" />
     <meta name="google-site-verification" content="k2c6nRp2Us9nTqmd0JLR0WV87sAEPL0Ujs7oeF5t4vc" />
-
-    
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -154,7 +152,6 @@
             z-index: 100;
         }
 
-        /* ===== NEW LOGO - CROMX BRAND ===== */
         .logo {
             display: flex;
             align-items: center;
@@ -319,56 +316,6 @@
             border-bottom-color: #ff6b35;
         }
 
-        /* ===== BANNER / HERO ===== */
-        .hero {
-            background: linear-gradient(135deg, #232f3e 0%, #1a2533 100%);
-            color: white;
-            padding: 50px 5%;
-            margin: 20px 5%;
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '⚡';
-            position: absolute;
-            right: -50px;
-            top: -50px;
-            font-size: 200px;
-            opacity: 0.05;
-        }
-        .hero-content h1 {
-            font-size: 38px;
-            font-weight: 900;
-        }
-        .hero-content h1 span {
-            color: #ff6b35;
-        }
-        .hero-content p {
-            color: #ccc;
-            margin: 15px 0 25px;
-            font-size: 16px;
-        }
-        .hero-btn {
-            padding: 14px 35px;
-            background: #ff6b35;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .hero-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
-        }
-
         /* ===== SECTION TITLE ===== */
         .section-title {
             padding: 0 5%;
@@ -441,6 +388,7 @@
             background: #f8f9fa;
             padding: 20px;
             position: relative;
+            border-bottom: none;
         }
         .product-image img {
             max-width: 100%;
@@ -476,7 +424,7 @@
         }
 
         .product-info {
-            padding: 20px;
+            padding: 16px 18px 18px;
         }
         .product-info .category {
             font-size: 12px;
@@ -487,7 +435,7 @@
         }
         .product-info h3 {
             font-size: 17px;
-            margin: 8px 0 10px;
+            margin: 6px 0 8px;
             font-weight: 600;
             line-height: 1.3;
             height: 44px;
@@ -496,7 +444,7 @@
         .product-info .rating {
             color: #f5a623;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .product-info .rating span {
             color: #999;
@@ -519,7 +467,7 @@
         .product-info .actions {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
         .product-info .actions button {
             flex: 1;
@@ -535,17 +483,10 @@
             justify-content: center;
             gap: 8px;
         }
-        .btn-cart {
-            background: #ff6b35;
-            color: white;
-        }
-        .btn-cart:hover {
-            background: #e55a2b;
-            transform: scale(1.02);
-        }
         .btn-buy {
             background: #232f3e;
             color: white;
+            width: 100%;
         }
         .btn-buy:hover {
             background: #1a2533;
@@ -753,38 +694,6 @@
             font-size: 15px;
         }
 
-        .detail-info .options {
-            margin: 15px 0;
-        }
-        .detail-info .options label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 8px;
-            color: #444;
-            font-size: 14px;
-        }
-        .detail-info .options .option-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .detail-info .options .option-group button {
-            padding: 8px 20px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 500;
-            font-size: 13px;
-        }
-        .detail-info .options .option-group button:hover,
-        .detail-info .options .option-group button.active {
-            border-color: #ff6b35;
-            background: #fff5f0;
-            color: #ff6b35;
-        }
-
         .detail-info .qty-selector {
             display: flex;
             align-items: center;
@@ -829,18 +738,10 @@
             transition: 0.3s;
             min-width: 130px;
         }
-        .detail-info .action-buttons .btn-cart-detail {
-            background: #ff6b35;
-            color: white;
-        }
-        .detail-info .action-buttons .btn-cart-detail:hover {
-            background: #e55a2b;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
-        }
         .detail-info .action-buttons .btn-buy-detail {
             background: #232f3e;
             color: white;
+            width: 100%;
         }
         .detail-info .action-buttons .btn-buy-detail:hover {
             background: #000;
@@ -1166,25 +1067,9 @@
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .detail-content {
-                flex-direction: column;
-            }
-            .detail-main-image {
-                height: 280px;
-            }
-            .detail-thumbnails .thumb {
-                height: 60px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        /* ============================================= */
+        /* ===== RESPONSIVE - MOBILE FIXED ===== */
+        /* ============================================= */
         @media (max-width: 768px) {
             .top-bar {
                 font-size: 11px;
@@ -1192,46 +1077,49 @@
                 text-align: center;
                 gap: 5px;
             }
+            .top-bar a {
+                margin-left: 10px;
+            }
             .header {
                 flex-direction: column;
                 gap: 10px;
+                padding: 10px 3%;
             }
             .search-bar {
                 margin: 10px 0;
                 max-width: 100%;
                 width: 100%;
             }
+            .search-bar input {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+            .search-bar button {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
             .header-actions {
                 gap: 15px;
             }
-            .hero-content h1 {
-                font-size: 26px;
+            .header-actions .action i {
+                font-size: 20px;
             }
-            .hero {
-                padding: 30px 20px;
-                text-align: center;
-                margin: 10px 3%;
-            }
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 15px;
-                padding: 0 3%;
-            }
-            .product-image {
-                height: 180px;
-            }
-            .product-info h3 {
-                font-size: 14px;
-                height: 36px;
-            }
-            .product-info .price {
-                font-size: 18px;
-            }
-            .product-info .actions {
-                flex-direction: column;
+            .header-actions .action span {
+                font-size: 10px;
             }
             .section-title h2 {
                 font-size: 20px;
+            }
+            .section-title {
+                padding: 0 3%;
+                margin: 20px 0 15px;
+            }
+            .categories-bar {
+                gap: 15px;
+                padding: 8px 3%;
+            }
+            .categories-bar a {
+                font-size: 12px;
             }
             .features {
                 grid-template-columns: repeat(2, 1fr);
@@ -1251,13 +1139,6 @@
             .feature-item p {
                 font-size: 12px;
             }
-            .categories-bar {
-                gap: 15px;
-                padding: 8px 3%;
-            }
-            .categories-bar a {
-                font-size: 12px;
-            }
             .toast {
                 bottom: 15px;
                 right: 15px;
@@ -1266,6 +1147,8 @@
             }
             .detail-modal {
                 padding: 20px;
+                margin: 10px;
+                border-radius: 18px;
             }
             .detail-main-image {
                 height: 220px;
@@ -1279,8 +1162,16 @@
             .detail-info .price {
                 font-size: 24px;
             }
+            .detail-info .description {
+                font-size: 14px;
+            }
+            .detail-info .action-buttons button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
             .checkout-modal {
                 padding: 25px 20px;
+                margin: 10px;
             }
             .form-row {
                 grid-template-columns: 1fr;
@@ -1295,70 +1186,243 @@
             .logo-icon i {
                 font-size: 20px;
             }
+            .logo-text .tagline {
+                font-size: 8px;
+            }
+            .cart-badge {
+                font-size: 10px;
+                padding: 1px 6px;
+                top: -6px;
+                right: -8px;
+            }
+            .checkout-modal h2 {
+                font-size: 20px;
+            }
+            .checkout-modal .btn-submit {
+                font-size: 16px;
+                padding: 14px;
+            }
+            .address-section {
+                padding: 14px;
+            }
+            .payment-section {
+                padding: 14px;
+            }
+            .payment-section .payment-option {
+                padding: 10px 14px;
+            }
+            .payment-section .payment-option i {
+                font-size: 20px;
+            }
+            .payment-section .payment-option .pay-details strong {
+                font-size: 14px;
+            }
+            .detail-content {
+                flex-direction: column;
+            }
         }
 
+        /* ===== MOBILE (480px and below) - NO GAP, NO ORANGE LINE ===== */
         @media (max-width: 480px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                gap: 6px;
+                padding: 0 2%;
             }
+            .product-card {
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                overflow: hidden;
+            }
+            .product-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            /* ===== IMAGE - NO BORDER, NO ORANGE LINE ===== */
             .product-image {
                 height: 150px;
-                padding: 10px;
+                padding: 8px;
+                background: #f8f9fa;
+                border-bottom: none !important;
+                border: none !important;
             }
+            .product-image img {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+            }
+            .product-image .wishlist {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+                top: 6px;
+                right: 6px;
+                background: rgba(255,255,255,0.9);
+            }
+            .product-image .wishlist:hover {
+                transform: scale(1.05);
+            }
+            /* ===== INFO - TIGHT PADDING ===== */
             .product-info {
-                padding: 12px;
+                padding: 4px 6px 8px !important;
+                border-top: none !important;
+            }
+            .product-info .category {
+                font-size: 9px;
+                letter-spacing: 0.3px;
+                margin-bottom: 1px;
+                color: #999;
             }
             .product-info h3 {
                 font-size: 12px;
-                height: 30px;
+                height: auto;
+                min-height: 26px;
+                margin: 2px 0 3px;
+                line-height: 1.3;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                font-weight: 600;
+                color: #333;
+            }
+            .product-info .rating {
+                font-size: 10px;
+                margin-bottom: 1px;
+                color: #f5a623;
+            }
+            .product-info .rating span {
+                font-size: 9px;
+                color: #999;
             }
             .product-info .price {
-                font-size: 15px;
+                font-size: 14px;
+                margin: 1px 0;
+                font-weight: 700;
+                color: #ff6b35;
+            }
+            .product-info .price small {
+                font-size: 10px;
+                margin-left: 4px;
+                color: #999;
+                text-decoration: line-through;
+                font-weight: 400;
+            }
+            .product-info .actions {
+                margin-top: 4px;
+                gap: 0;
             }
             .product-info .actions button {
-                font-size: 11px;
-                padding: 8px 10px;
+                font-size: 10px;
+                padding: 4px 6px;
+                border-radius: 14px;
+                gap: 4px;
+                font-weight: 600;
+                width: 100%;
+                background: #232f3e;
+                color: white;
+            }
+            .product-info .actions button i {
+                font-size: 9px;
+            }
+            .btn-buy {
+                background: #232f3e;
+                color: white;
+                width: 100%;
+                padding: 6px 10px !important;
+                font-size: 10px !important;
+                border-radius: 14px !important;
+            }
+            .btn-buy:hover {
+                background: #1a2533;
             }
             .product-badge {
-                font-size: 10px;
-                padding: 3px 10px;
-                top: 10px;
-                left: 10px;
+                font-size: 8px;
+                padding: 2px 8px;
+                top: 6px;
+                left: 6px;
+                border-radius: 12px;
+                font-weight: 700;
             }
-            .features {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-                padding: 20px 12px;
+            .product-badge.hot {
+                background: #dc3545;
             }
-            .feature-item {
-                padding: 12px 8px;
+            .product-badge.new {
+                background: #28a745;
             }
-            .feature-item i {
-                font-size: 28px;
-            }
-            .feature-item h4 {
-                font-size: 13px;
-            }
-            .feature-item p {
-                font-size: 11px;
-            }
-            .detail-thumbnails {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-            }
-            .detail-thumbnails .thumb {
-                height: 40px;
-            }
-            .detail-info .action-buttons {
-                flex-direction: column;
+            
+            /* ===== Extra small phones (320px) ===== */
+            @media (max-width: 360px) {
+                .product-grid {
+                    gap: 4px;
+                    padding: 0 1%;
+                }
+                .product-image {
+                    height: 120px;
+                    padding: 4px;
+                }
+                .product-info {
+                    padding: 3px 4px 6px !important;
+                }
+                .product-info h3 {
+                    font-size: 10px;
+                    min-height: 22px;
+                }
+                .product-info .price {
+                    font-size: 12px;
+                }
+                .product-info .price small {
+                    font-size: 8px;
+                }
+                .product-info .actions button {
+                    font-size: 8px;
+                    padding: 3px 5px;
+                    border-radius: 12px;
+                }
+                .product-badge {
+                    font-size: 7px;
+                    padding: 1px 6px;
+                    top: 4px;
+                    left: 4px;
+                }
+                .product-image .wishlist {
+                    width: 22px;
+                    height: 22px;
+                    font-size: 10px;
+                    top: 4px;
+                    right: 4px;
+                }
+                .product-info .category {
+                    font-size: 8px;
+                }
+                .product-info .rating {
+                    font-size: 8px;
+                }
+                .product-info .rating span {
+                    font-size: 7px;
+                }
+                .btn-buy {
+                    padding: 4px 6px !important;
+                    font-size: 8px !important;
+                    border-radius: 10px !important;
+                }
             }
         }
     </style>
 </head>
 <body>
 
-
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+    <div>
+        <i class="fas fa-truck"></i> Free Shipping on orders above Rs.499
+    </div>
+    <div>
+        <a href="#"><i class="fas fa-phone"></i> +91 98765 43210</a>
+        <a href="#"><i class="fas fa-envelope"></i> support@cromx.shop</a>
+        <a href="#"><i class="fas fa-user"></i> Guest</a>
+    </div>
+</div>
 
 <!-- ===== HEADER ===== -->
 <header class="header">
@@ -1393,20 +1457,6 @@
     <a href="#">🎮 Gaming</a>
     <a href="#">⚽ Sports</a>
 </div>
-
-<!-- ===== HERO BANNER ===== -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Big <span>Sale</span> 2026</h1>
-        <p>Get up to 70% off on trending products. Limited time offer!<br />No account needed. Shop as guest.</p>
-        <button class="hero-btn" onclick="scrollToProducts()">
-            <i class="fas fa-bolt"></i> Shop Now
-        </button>
-    </div>
-    <div style="font-size: 80px; opacity: 0.2;">
-        <i class="fas fa-tags"></i>
-    </div>
-</section>
 
 <!-- ===== PRODUCTS SECTION ===== -->
 <div class="section-title" id="productsSection">
@@ -1450,7 +1500,6 @@
         <button class="close-btn" id="closeDetailBtn">&times;</button>
         
         <div class="detail-content">
-            <!-- Left - Images -->
             <div class="detail-images">
                 <div class="detail-main-image">
                     <img id="detailMainImage" src="" alt="Product" />
@@ -1460,23 +1509,12 @@
                 </div>
             </div>
 
-            <!-- Right - Info -->
             <div class="detail-info">
                 <div class="category" id="detailCategory">FASHION</div>
                 <h2 id="detailTitle">Product Name</h2>
                 <div class="rating" id="detailRating">★★★★☆ <span>(24 reviews)</span></div>
                 <div class="price" id="detailPrice">Rs.399.00 <small>Rs.599.00</small></div>
                 <p class="description" id="detailDesc">Product description goes here.</p>
-
-                <div class="options">
-                    <label>📐 Size:</label>
-                    <div class="option-group" id="detailSizes"></div>
-                </div>
-
-                <div class="options">
-                    <label>🎨 Color:</label>
-                    <div class="option-group" id="detailColors"></div>
-                </div>
 
                 <div class="qty-selector">
                     <button id="detailQtyMinus">−</button>
@@ -1485,9 +1523,6 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-cart-detail" id="detailAddToCart">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
                     <button class="btn-buy-detail" id="detailBuyNow">
                         <i class="fas fa-bolt"></i> Buy Now
                     </button>
@@ -1508,13 +1543,11 @@
 
         <div class="checkout-summary" id="checkoutSummary">
             <div class="row"><span>Product</span> <strong id="checkoutProductName">-</strong></div>
-            <div class="row"><span>Size / Color</span> <span id="checkoutVariant">-</span></div>
             <div class="row"><span>Quantity</span> <span id="checkoutQty">1</span></div>
             <div class="row total"><span>Total Amount</span> <span id="checkoutTotal">Rs. 0.00</span></div>
         </div>
 
         <form id="checkoutForm">
-            <!-- Customer Info -->
             <div class="form-group">
                 <label>👤 Full Name <span class="required">*</span></label>
                 <input type="text" id="checkoutName" placeholder="e.g. Rahul Sharma" required />
@@ -1524,7 +1557,6 @@
                 <input type="tel" id="checkoutPhone" placeholder="9876543210" required />
             </div>
 
-            <!-- Address Section -->
             <div class="address-section">
                 <div class="section-title-small">
                     <i class="fas fa-map-marker-alt"></i> Delivery Address
@@ -1562,7 +1594,6 @@
                 </div>
             </div>
 
-            <!-- Payment Section - COD Only -->
             <div class="payment-section">
                 <div class="section-title-small" style="margin-bottom:10px;">
                     <i class="fas fa-wallet"></i> Payment Method
@@ -1601,7 +1632,6 @@
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="footer-grid">
-        
         <div>
             <h4>Customer Service</h4>
             <a href="https://www.cromx.shop/help">Help Center</a>
@@ -1651,9 +1681,7 @@
             ],
             badge: "Hot",
             badgeType: "hot",
-            description: "Premium quality vegetable chopper with stainless steel blades. Make cooking easy and fast.",
-            sizes: ["Small"],
-            colors: ["White"]
+            description: "Premium quality vegetable chopper with stainless steel blades. Make cooking easy and fast."
         },
         {
             id: 2,
@@ -1671,12 +1699,11 @@
             ],
             badge: "Sale",
             badgeType: "new",
-            description: "High-quality wireless Bluetoth with noise cancellation, 40 hours battery life, and premium sound. Fres Watch Rs 499",
-            colors: ["Black", "White"]
+            description: "High-quality wireless Bluetooth with noise cancellation, 40 hours battery life, and premium sound. Free Watch @ Rs 499"
         },
         {
             id: 3,
-            name: "Modern Asthetic Premiume Watch",
+            name: "Modern Aesthetic Premium Watch",
             category: "Electronics",
             price: 390,
             originalPrice: 799,
@@ -1690,9 +1717,7 @@
             ],
             badge: "New",
             badgeType: "new",
-            description: "Advanced Quartz Technology Watch Premium Look Asthetic watch ",
-            sizes: ["One Size"],
-            colors: ["Black"]
+            description: "Advanced Quartz Technology Watch. Premium look aesthetic watch with stainless steel strap."
         },
         {
             id: 4,
@@ -1710,9 +1735,7 @@
             ],
             badge: "Trending",
             badgeType: "hot",
-            description: "Premium Quality Faucet 360' Rotation Wash Your Vegitable Easly",
-            sizes: ["M"],
-            colors: ["White Steel"]
+            description: "Premium Quality Faucet with 360° Rotation. Wash your vegetables easily with high-pressure spray."
         },
         {
             id: 5,
@@ -1730,9 +1753,7 @@
             ],
             badge: "Sale",
             badgeType: "hot",
-            description: "Powerful 1000W kitchen blender with 6 stainless steel blades. Perfect for smoothies and juices.",
-            sizes: ["One Size"],
-            colors: ["Silver", "Black"]
+            description: "Powerful 1000W kitchen blender with 6 stainless steel blades. Perfect for smoothies and juices."
         },
         {
             id: 6,
@@ -1750,9 +1771,7 @@
             ],
             badge: "Popular",
             badgeType: "new",
-            description: "Premium non-slip yoga mat with extra cushioning. Perfect for yoga, pilates, and floor exercises.",
-            sizes: ["One Size"],
-            colors: ["Purple", "Blue", "Green"]
+            description: "Premium non-slip yoga mat with extra cushioning. Perfect for yoga, pilates, and floor exercises."
         },
         {
             id: 7,
@@ -1770,9 +1789,7 @@
             ],
             badge: "Best Seller",
             badgeType: "hot",
-            description: "Professional gaming mouse with RGB lighting, 16000 DPI, and 50 hours battery life.",
-            sizes: ["One Size"],
-            colors: ["Black", "White"]
+            description: "Professional gaming mouse with RGB lighting, 16000 DPI, and 50 hours battery life."
         },
         {
             id: 8,
@@ -1790,9 +1807,7 @@
             ],
             badge: "Limited",
             badgeType: "new",
-            description: "Stylish designer handbag made with premium leather. Spacious interior with multiple compartments.",
-            sizes: ["One Size"],
-            colors: ["Red", "Brown", "Black"]
+            description: "Stylish designer handbag made with premium leather. Spacious interior with multiple compartments."
         }
     ];
 
@@ -1802,12 +1817,8 @@
     let state = {
         cartCount: 0,
         selectedProduct: null,
-        selectedSize: "M",
-        selectedColor: "Red",
         quantity: 1,
-        detailQty: 1,
-        detailSize: "M",
-        detailColor: "Red"
+        detailQty: 1
     };
 
     // =============================================
@@ -1838,11 +1849,8 @@
                     <div class="rating">${stars} <span>(${product.reviews})</span></div>
                     <div class="price">Rs.${product.price}.00 <small>Rs.${product.originalPrice}.00</small></div>
                     <div class="actions">
-                        <button class="btn-cart" onclick="event.stopPropagation(); addToCart(${product.id})">
-                            <i class="fas fa-cart-plus"></i> Cart
-                        </button>
                         <button class="btn-buy" onclick="event.stopPropagation(); buyNow(${product.id})">
-                            <i class="fas fa-bolt"></i> Buy
+                            <i class="fas fa-bolt"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -1861,8 +1869,6 @@
 
         state.selectedProduct = product;
         state.detailQty = 1;
-        state.detailSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : "M";
-        state.detailColor = product.colors && product.colors.length > 0 ? product.colors[0] : "Red";
 
         const mainImage = product.images && product.images.length > 0 ? product.images[0] : 'https://via.placeholder.com/400x400/ff6b35/fff?text=Product';
         document.getElementById('detailMainImage').src = mainImage;
@@ -1890,44 +1896,6 @@
         document.getElementById('detailRating').innerHTML = `${stars} <span>(${product.reviews} reviews)</span>`;
         document.getElementById('detailPrice').innerHTML = `Rs.${product.price}.00 <small>Rs.${product.originalPrice}.00</small>`;
         document.getElementById('detailDesc').textContent = product.description || 'Premium quality product.';
-
-        // Sizes
-        const sizeContainer = document.getElementById('detailSizes');
-        sizeContainer.innerHTML = '';
-        if (product.sizes && product.sizes.length > 0) {
-            product.sizes.forEach(size => {
-                const btn = document.createElement('button');
-                btn.textContent = size;
-                if (size === state.detailSize) btn.classList.add('active');
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('#detailSizes button').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    state.detailSize = this.textContent;
-                });
-                sizeContainer.appendChild(btn);
-            });
-        } else {
-            sizeContainer.innerHTML = '<span style="color:#888;font-size:14px;">One Size</span>';
-        }
-
-        // Colors
-        const colorContainer = document.getElementById('detailColors');
-        colorContainer.innerHTML = '';
-        if (product.colors && product.colors.length > 0) {
-            product.colors.forEach(color => {
-                const btn = document.createElement('button');
-                btn.textContent = color;
-                if (color === state.detailColor) btn.classList.add('active');
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('#detailColors button').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    state.detailColor = this.textContent;
-                });
-                colorContainer.appendChild(btn);
-            });
-        } else {
-            colorContainer.innerHTML = '<span style="color:#888;font-size:14px;">Standard</span>';
-        }
 
         document.getElementById('detailQtyValue').textContent = state.detailQty;
         document.getElementById('detailOverlay').classList.add('active');
@@ -1961,19 +1929,6 @@
     });
 
     // =============================================
-    // 🛒 DETAIL - ADD TO CART
-    // =============================================
-    document.getElementById('detailAddToCart').addEventListener('click', function() {
-        if (!state.selectedProduct) return;
-        state.cartCount++;
-        document.getElementById('cartCount').textContent = state.cartCount;
-        localStorage.setItem('cartCount', state.cartCount);
-        showToast(`✅ ${state.selectedProduct.name} added to cart!`);
-        if (navigator.vibrate) navigator.vibrate(30);
-        closeDetail();
-    });
-
-    // =============================================
     // 💳 DETAIL - BUY NOW
     // =============================================
     document.getElementById('detailBuyNow').addEventListener('click', function() {
@@ -1988,11 +1943,8 @@
     function openCheckout(product) {
         state.selectedProduct = product;
         const qty = state.detailQty || 1;
-        const size = state.detailSize || 'N/A';
-        const color = state.detailColor || 'N/A';
 
         document.getElementById('checkoutProductName').textContent = product.name;
-        document.getElementById('checkoutVariant').textContent = `${size} / ${color}`;
         document.getElementById('checkoutQty').textContent = qty;
         document.getElementById('checkoutTotal').textContent = `Rs. ${(product.price * qty).toFixed(2)}`;
 
@@ -2060,8 +2012,6 @@
         const fullAddress = `${house}, ${society}${landmark ? ', ' + landmark : ''}, ${city}, ${stateField} - ${pincode}`;
 
         const qty = state.detailQty || 1;
-        const size = state.detailSize || 'N/A';
-        const color = state.detailColor || 'N/A';
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '⏳ Submitting...';
@@ -2073,8 +2023,6 @@
                 productName: state.selectedProduct.name,
                 productCategory: state.selectedProduct.category,
                 price: state.selectedProduct.price,
-                size: size,
-                color: color,
                 quantity: qty,
                 total: state.selectedProduct.price * qty,
                 customerName: name,
@@ -2122,20 +2070,6 @@
         statusDiv.textContent = message;
         statusDiv.className = type;
         statusDiv.style.display = 'block';
-    }
-
-    // =============================================
-    // 🛒 ADD TO CART (from grid)
-    // =============================================
-    function addToCart(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
-
-        state.cartCount++;
-        document.getElementById('cartCount').textContent = state.cartCount;
-        localStorage.setItem('cartCount', state.cartCount);
-        showToast(`✅ ${product.name} added to cart!`);
-        if (navigator.vibrate) navigator.vibrate(30);
     }
 
     // =============================================
