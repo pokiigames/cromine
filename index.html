@@ -2044,20 +2044,24 @@
 
             const docRef = await db.collection('orders').add(orderData);
 
-            // =============================================
-            // ✅ FIRE CONVERSION TAG - ONLY ON SUCCESSFUL ORDER
-            // =============================================
-          		const orderTotal = state.selectedProduct.price * qty;
-           		const orderId = `CROMX-${Date.now()}-${Math.floor(Math.random()*10000)}`;
+           // Firestore mein order save karne ke baad
 
-					gtag('event', 'conversion', {
-    					'send_to': 'AW-18343990871/AlRuCJ33oNccENesjKtE',
-    			'value': orderTotal,
-    			'currency': 'INR',
-    			'transaction_id': orderId
-							});
+
+// =============================================
+// ✅ YAHAN PAR CONVERSION TAG FIRE KAREIN
+// =============================================
+const orderTotal = state.selectedProduct.price * qty;
+const orderId = `CROMX-${Date.now()}-${Math.floor(Math.random()*10000)}`;
+
+gtag('event', 'conversion', {
+    'send_to': 'AW-18343990871/AlRuCJ33oNccENesjKtE',
+    'value': orderTotal,
+    'currency': 'INR',
+    'transaction_id': orderId
+});
 
 console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
+// =============================================
 // =============================================
 
             console.log('✅ Google Ads Conversion Tracked!');
