@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<div class="header-actions">
+    <!-- Cart Icon with Badge -->
+    <div class="action" onclick="showToast('🛒 Cart opened!')">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+        <span class="cart-badge" id="cartCount">0</span>  <!-- ✅ YEH ELEMENT ADD KAREIN -->
+    </div>
+</div>
     
     <!-- ===== SEO META TAGS ===== -->
     <title>CromX - Best Online Shopping Store India | Premium Electronics, Fashion & More</title>
@@ -11,27 +19,16 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cromx.shop/" />
     <meta name="google-site-verification" content="k2c6nRp2Us9nTqmd0JLR0WV87sAEPL0Ujs7oeF5t4vc" />
-	<!-- Google tag (gtag.js) -->
+	
+	<!-- ===== GOOGLE TAG (gtag.js) - SITE WIDE ===== -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18343990871"></script>
 	<script>
   	 	window.dataLayer = window.dataLayer || [];
   		function gtag(){dataLayer.push(arguments);}
   		gtag('js', new Date());
-
  		gtag('config', 'AW-18343990871');
 	</script>
-
-	<!-- Event snippet for Purchase conversion page -->
-	<script>
-  		gtag('event', 'conversion', {
-      	'send_to': 'AW-18343990871/s_CXCM-dmtUcENesjKtE',
-      	'value': 1.0,
-      	'currency': 'INR',
-      	'transaction_id': ''
-      // 'new_customer': true /* calculate dynamically, populate with true/false */,
-  		});
-	</script>
-
+	<!-- ===== END GOOGLE TAG ===== -->
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -1259,7 +1256,6 @@
                 transform: translateY(-3px);
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             }
-            /* ===== IMAGE - NO BORDER, NO ORANGE LINE ===== */
             .product-image {
                 height: 150px;
                 padding: 8px;
@@ -1283,7 +1279,6 @@
             .product-image .wishlist:hover {
                 transform: scale(1.05);
             }
-            /* ===== INFO - TIGHT PADDING ===== */
             .product-info {
                 padding: 4px 6px 8px !important;
                 border-top: none !important;
@@ -1372,7 +1367,6 @@
                 background: #28a745;
             }
             
-            /* ===== Extra small phones (320px) ===== */
             @media (max-width: 360px) {
                 .product-grid {
                     gap: 4px;
@@ -1449,11 +1443,11 @@
     </a>
 
     <div class="search-bar">
-        <input type="text" placeholder="Search for products, brands & more..."          	 id="searchInput" />
+        <input type="text" placeholder="Search for products, brands & more..." id="searchInput" />
         <button id="searchBtn"><i class="fas fa-search"></i></button>
     </div>
 
-    </header>
+</header>
 
 <!-- ===== CATEGORIES ===== -->
 <div class="categories-bar">
@@ -1544,7 +1538,7 @@
     <div class="checkout-modal">
         <button class="close-btn" id="closeCheckoutBtn">&times;</button>
         <h2>📦 Place Your Order</h2>
-        <p class="subtitle">  ✅ Guest Checkout - No account required</p>
+        <p class="subtitle">✅ Guest Checkout - No account required</p>
 
         <div class="checkout-summary" id="checkoutSummary">
             <div class="row"><span>Product</span> <strong id="checkoutProductName">-</strong></div>
@@ -1555,7 +1549,7 @@
         <form id="checkoutForm">
             <div class="form-group">
                 <label>👤 Full Name <span class="required">*</span></label>
-                <input type="text" id="checkoutName" placeholder=" Enter your name" required />
+                <input type="text" id="checkoutName" placeholder="Enter your name" required />
             </div>
             <div class="form-group">
                 <label>📱 Mobile Number <span class="required">*</span></label>
@@ -1606,10 +1600,10 @@
                 <div class="payment-option">
                     <i class="fas fa-money-bill-wave"></i>
                     <div class="pay-details">
-                        <strong>(COD)</strong>
-                        <span> </span>
+                        <strong>Cash on Delivery (COD)</strong>
+                        <span>Pay when you receive</span>
                     </div>
-                    <span class="cod-badge">✓Available</span>
+                    <span class="cod-badge">✓ Available</span>
                 </div>
                 <input type="hidden" id="checkoutPayment" value="COD" />
             </div>
@@ -1674,7 +1668,7 @@
             id: 1,
             name: "Fancy Vegetable Chopper",
             category: "Electronics",
-            price: 449,
+            price: 9,
             originalPrice: 599,
             rating: 4.1,
             reviews: 24,
@@ -1761,7 +1755,7 @@
             description: "Professional gaming mouse with RGB lighting, 16000 DPI, and 50 hours battery life."
         },
         {
-            id: 5,
+            id: 6,
             name: "Kitchen Blender - 1000W Motor",
             category: "Home & Living",
             price: 3499,
@@ -1779,7 +1773,7 @@
             description: "Powerful 1000W kitchen blender with 6 stainless steel blades. Perfect for smoothies and juices."
         },
         {
-            id: 6,
+            id: 7,
             name: "Premium Yoga Mat - Non Slip",
             category: "Sports",
             price: 899,
@@ -1797,24 +1791,6 @@
             description: "Premium non-slip yoga mat with extra cushioning. Perfect for yoga, pilates, and floor exercises."
         },
         {
-            id: 7,
-            name: "Kitchen Blender - 1000W Motor",
-            category: "Home & Living",
-            price: 3499,
-            originalPrice: 4999,
-            rating: 4.7,
-            reviews: 67,
-            images: [
-                "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&h=500&fit=crop&sat=-30",
-                "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&h=500&fit=crop&bright=-20",
-                "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&h=500&fit=crop&con=-10"
-            ],
-            badge: "Sale",
-            badgeType: "hot",
-            description: "Powerful 1000W kitchen blender with 6 stainless steel blades. Perfect for smoothies and juices."
-        },
-	{
             id: 8,
             name: "Women's Designer Handbag",
             category: "Fashion",
@@ -1993,7 +1969,7 @@
     });
 
     // =============================================
-    // 📤 SUBMIT ORDER TO FIREBASE
+    // 📤 SUBMIT ORDER TO FIREBASE + CONVERSION TRACKING
     // =============================================
     document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -2033,21 +2009,27 @@
         }
 
         const fullAddress = `${house}, ${society}${landmark ? ', ' + landmark : ''}, ${city}, ${stateField} - ${pincode}`;
-
         const qty = state.detailQty || 1;
+        const orderTotal = state.selectedProduct.price * qty;
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '⏳ Submitting...';
         showCheckoutStatus('📤 Saving your order to Firebase...', 'loading');
 
         try {
+            // ✅ GENERATE UNIQUE ORDER ID
+            const timestamp = Date.now();
+            const randomNum = Math.floor(Math.random() * 10000);
+            const orderId = `CROMX-${timestamp}-${randomNum}`;
+
             const orderData = {
+                orderId: orderId,
                 productId: state.selectedProduct.id,
                 productName: state.selectedProduct.name,
                 productCategory: state.selectedProduct.category,
                 price: state.selectedProduct.price,
                 quantity: qty,
-                total: state.selectedProduct.price * qty,
+                total: orderTotal,
                 customerName: name,
                 phone: phone,
                 houseNo: house,
@@ -2066,7 +2048,22 @@
 
             const docRef = await db.collection('orders').add(orderData);
 
-            showCheckoutStatus(`✅ Order Placed Successfully! 🎉\nOrder ID: ${docRef.id.substring(0,8)}`, 'success');
+            // =============================================
+            // ✅ FIRE CONVERSION TAG - ONLY ON SUCCESSFUL ORDER
+            // =============================================
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18343990871/s_CXCM-dmtUcENesjKtE',
+                'value': orderTotal,
+                'currency': 'INR',
+                'transaction_id': orderId
+            });
+
+            console.log('✅ Google Ads Conversion Tracked!');
+            console.log('📦 Order ID:', orderId);
+            console.log('💰 Order Total: ₹' + orderTotal);
+            // =============================================
+
+            showCheckoutStatus(`✅ Order Placed Successfully! 🎉\nOrder ID: ${orderId.substring(0, 15)}...`, 'success');
             submitBtn.innerHTML = '✅ Order Confirmed!';
 
             state.cartCount++;
