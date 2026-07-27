@@ -25,8 +25,7 @@
 		function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); 
 		gtag('config', 'AW-18343990871'); </script>
 
-	<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18343990871"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18343990871'); </script>
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cromx.shop/" />
@@ -2048,12 +2047,18 @@
             // =============================================
             // ✅ FIRE CONVERSION TAG - ONLY ON SUCCESSFUL ORDER
             // =============================================
-            gtag('event', 'conversion', {
-                'send_to': 'AW-18343990871/s_CXCM-dmtUcENesjKtE',
-                'value': orderTotal,
-                'currency': 'INR',
-                'transaction_id': orderId
-            });
+          		const orderTotal = state.selectedProduct.price * qty;
+           		const orderId = `CROMX-${Date.now()}-${Math.floor(Math.random()*10000)}`;
+
+					gtag('event', 'conversion', {
+    					'send_to': 'AW-18343990871/AlRuCJ33oNccENesjKtE',
+    			'value': orderTotal,
+    			'currency': 'INR',
+    			'transaction_id': orderId
+							});
+
+console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
+// =============================================
 
             console.log('✅ Google Ads Conversion Tracked!');
             console.log('📦 Order ID:', orderId);
