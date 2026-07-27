@@ -3,14 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<div class="header-actions">
-    <!-- Cart Icon with Badge -->
-    <div class="action" onclick="showToast('🛒 Cart opened!')">
-        <i class="fas fa-shopping-cart"></i>
-        <span>Cart</span>
-        <span class="cart-badge" id="cartCount">0</span>  <!-- ✅ YEH ELEMENT ADD KAREIN -->
-    </div>
-</div>
     
     <!-- ===== SEO META TAGS ===== -->
     <title>CromX - Best Online Shopping Store India | Premium Electronics, Fashion & More</title>
@@ -19,13 +11,17 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cromx.shop/" />
     <meta name="google-site-verification" content="k2c6nRp2Us9nTqmd0JLR0WV87sAEPL0Ujs7oeF5t4vc" />
-	
-	<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18343990871">
-	</script> <script> window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); 
-		gtag('config', 'AW-18343990871'); </script>
-
-
+    
+    <!-- ===== GOOGLE TAG (gtag.js) - SITE WIDE ===== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18343990871"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-18343990871');
+    </script>
+    <!-- ===== END GOOGLE TAG ===== -->
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cromx.shop/" />
@@ -824,7 +820,7 @@
 
         .checkout-summary {
             background: #f8f9fa;
-            padding: 10px;	
+            padding: 10px;    
             border-radius: 15px;
             margin: 15px 0;
             border-left: 4px solid #ff6b35;
@@ -996,6 +992,115 @@
             background: #fff3cd;
             color: #856404;
             border: 2px solid #ffeaa7;
+        }
+
+        /* ============================================= */
+        /* ===== ORDER SUCCESS PAGE ===== */
+        /* ============================================= */
+        .success-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 5000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .success-overlay.active {
+            display: flex;
+        }
+
+        .success-modal {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 35px;
+            border-radius: 25px;
+            text-align: center;
+            animation: slideUp 0.5s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .success-modal .success-icon {
+            font-size: 80px;
+            color: #28a745;
+            margin-bottom: 15px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-modal h1 {
+            font-size: 28px;
+            color: #28a745;
+            margin-bottom: 8px;
+        }
+
+        .success-modal .order-id {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #555;
+            border: 1px dashed #ddd;
+        }
+
+        .success-modal .order-id strong {
+            color: #ff6b35;
+            font-size: 16px;
+        }
+
+        .success-modal .order-details {
+            text-align: left;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        .success-modal .order-details .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .success-modal .order-details .row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 16px;
+        }
+
+        .success-modal .btn-continue {
+            width: 100%;
+            padding: 14px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .success-modal .btn-continue:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
         }
 
         /* ===== TOAST ===== */
@@ -1234,6 +1339,15 @@
             .detail-content {
                 flex-direction: column;
             }
+            .success-modal {
+                padding: 30px 20px;
+            }
+            .success-modal .success-icon {
+                font-size: 60px;
+            }
+            .success-modal h1 {
+                font-size: 22px;
+            }
         }
 
         /* ===== MOBILE (480px and below) - NO GAP, NO ORANGE LINE ===== */
@@ -1423,9 +1537,6 @@
 </head>
 <body>
 
-<!-- ===== TOP BAR ===== -->
-
-
 <!-- ===== HEADER ===== -->
 <header class="header">
     <a href="#" class="logo">
@@ -1443,6 +1554,17 @@
         <button id="searchBtn"><i class="fas fa-search"></i></button>
     </div>
 
+    <div class="header-actions">
+        <div class="action" onclick="showToast('❤️ Wishlist coming soon!')">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+        </div>
+        <div class="action" onclick="showToast('🛒 Cart opened!')">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-badge" id="cartCount">0</span>
+        </div>
+    </div>
 </header>
 
 <!-- ===== CATEGORIES ===== -->
@@ -1488,7 +1610,7 @@
 </section>
 
 <!-- ============================================= -->
-<!-- ===== PRODUCT DETAIL MODAL (4 IMAGES) ===== -->
+<!-- ===== PRODUCT DETAIL MODAL ===== -->
 <!-- ============================================= -->
 <div class="detail-overlay" id="detailOverlay">
     <div class="detail-modal">
@@ -1617,6 +1739,36 @@
     </div>
 </div>
 
+<!-- ============================================= -->
+<!-- ===== ORDER SUCCESS PAGE ===== -->
+<!-- ============================================= -->
+<div class="success-overlay" id="successOverlay">
+    <div class="success-modal">
+        <div class="success-icon">✅</div>
+        <h1>🎉 Order Successful!</h1>
+        <p style="color: #666; margin-bottom: 10px;">Thank you for your purchase! Your order has been placed successfully.</p>
+        
+        <div class="order-id">
+            📦 Order ID: <strong id="successOrderId">-</strong>
+        </div>
+
+        <div class="order-details">
+            <div class="row"><span>Product</span> <span id="successProductName">-</span></div>
+            <div class="row"><span>Quantity</span> <span id="successQty">-</span></div>
+            <div class="row"><span>Total Amount</span> <span id="successTotal">-</span></div>
+            <div class="row"><span>Payment Method</span> <span>Cash on Delivery (COD)</span></div>
+        </div>
+
+        <p style="color: #888; font-size: 13px; margin: 10px 0;">
+            📧 Order confirmation sent to your registered number.
+        </p>
+
+        <button class="btn-continue" onclick="closeSuccess()">
+            <i class="fas fa-shopping-bag"></i> Continue Shopping
+        </button>
+    </div>
+</div>
+
 <!-- ===== TOAST ===== -->
 <div class="toast" id="toast">
     <i class="fas fa-check-circle"></i>
@@ -1664,7 +1816,7 @@
             id: 1,
             name: "Fancy Vegetable Chopper",
             category: "Electronics",
-            price: 9,
+            price: 449,
             originalPrice: 599,
             rating: 4.1,
             reviews: 24,
@@ -1965,6 +2117,27 @@
     });
 
     // =============================================
+    // ✅ OPEN SUCCESS PAGE
+    // =============================================
+    function openSuccess(orderId, productName, qty, total) {
+        document.getElementById('successOrderId').textContent = orderId;
+        document.getElementById('successProductName').textContent = productName;
+        document.getElementById('successQty').textContent = qty;
+        document.getElementById('successTotal').textContent = `Rs. ${total.toFixed(2)}`;
+        document.getElementById('successOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // =============================================
+    // ❌ CLOSE SUCCESS
+    // =============================================
+    function closeSuccess() {
+        document.getElementById('successOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+        window.location.reload();
+    }
+
+    // =============================================
     // 📤 SUBMIT ORDER TO FIREBASE + CONVERSION TRACKING
     // =============================================
     document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
@@ -2008,16 +2181,14 @@
         const qty = state.detailQty || 1;
         const orderTotal = state.selectedProduct.price * qty;
 
+        // ✅ GENERATE UNIQUE ORDER ID
+        const orderId = `CROMX-${Date.now()}-${Math.floor(Math.random()*10000)}`;
+
         submitBtn.disabled = true;
         submitBtn.innerHTML = '⏳ Submitting...';
         showCheckoutStatus('📤 Saving your order to Firebase...', 'loading');
 
         try {
-            // ✅ GENERATE UNIQUE ORDER ID
-            const timestamp = Date.now();
-            const randomNum = Math.floor(Math.random() * 10000);
-            const orderId = `CROMX-${timestamp}-${randomNum}`;
-
             const orderData = {
                 orderId: orderId,
                 productId: state.selectedProduct.id,
@@ -2042,46 +2213,36 @@
                 orderType: 'guest'
             };
 
-            const docRef = await db.collection('orders').add(orderData);
+            await db.collection('orders').add(orderData);
 
-           // Firestore mein order save karne ke baad
-
-
-// =============================================
-// ✅ YAHAN PAR CONVERSION TAG FIRE KAREIN
-// =============================================
-const orderTotal = state.selectedProduct.price * qty;
-const orderId = `CROMX-${Date.now()}-${Math.floor(Math.random()*10000)}`;
-
-gtag('event', 'conversion', {
-    'send_to': 'AW-18343990871/AlRuCJ33oNccENesjKtE',
-    'value': orderTotal,
-    'currency': 'INR',
-    'transaction_id': orderId
-});
-
-console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
-// =============================================
-// =============================================
+            // =============================================
+            // 🔥 FIRE CONVERSION TAG - SIRF ORDER SUCCESS PAR
+            // =============================================
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18343990871/AlRuCJ33oNccENesjKtE',
+                'value': orderTotal,
+                'currency': 'INR',
+                'transaction_id': orderId
+            });
 
             console.log('✅ Google Ads Conversion Tracked!');
             console.log('📦 Order ID:', orderId);
             console.log('💰 Order Total: ₹' + orderTotal);
             // =============================================
 
-            showCheckoutStatus(`✅ Order Placed Successfully! 🎉\nOrder ID: ${orderId.substring(0, 15)}...`, 'success');
-            submitBtn.innerHTML = '✅ Order Confirmed!';
+            // ✅ Close checkout and show success page
+            closeCheckout();
+            
+            // ✅ Show success page with order details
+            setTimeout(() => {
+                openSuccess(orderId, state.selectedProduct.name, qty, orderTotal);
+            }, 300);
 
             state.cartCount++;
             document.getElementById('cartCount').textContent = state.cartCount;
             localStorage.setItem('cartCount', state.cartCount);
 
-            setTimeout(() => {
-                closeCheckout();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Order';
-                showToast('🎉 Order placed successfully! Thank you!');
-            }, 3000);
+            showToast('🎉 Order placed successfully! Thank you!');
 
         } catch (error) {
             console.error('Firebase Error:', error);
@@ -2151,13 +2312,6 @@ console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
     }
 
     // =============================================
-    // 📜 SCROLL
-    // =============================================
-    function scrollToProducts() {
-        document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // =============================================
     // 💾 RESTORE CART
     // =============================================
     function restoreCartCount() {
@@ -2177,6 +2331,7 @@ console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
         console.log('⚡ CromX Store Loaded!');
         console.log('🔥 Firebase Connected!');
         console.log('📦 Total Products:', products.length);
+        console.log('✅ Google Ads Conversion Tracking Ready!');
     });
 
     // =============================================
@@ -2207,6 +2362,7 @@ console.log('✅ Google Ads Conversion Tracked:', orderId, '₹' + orderTotal);
         if (e.key === 'Escape') {
             if (document.getElementById('detailOverlay').classList.contains('active')) closeDetail();
             if (document.getElementById('checkoutOverlay').classList.contains('active')) closeCheckout();
+            if (document.getElementById('successOverlay').classList.contains('active')) closeSuccess();
         }
     });
 
